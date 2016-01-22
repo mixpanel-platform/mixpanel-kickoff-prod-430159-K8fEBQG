@@ -12,7 +12,6 @@
     <br/><br/>
             
     <div class="mixpanel-platform-section">
-      new user funnel - yesterday - Install, Registered, Geo, Prefs, Rated
       retention (weekly 24, daily 30)
       Registrations by city: SP, Rio, BA, Santiago, Mexico City, Bogota
       <div></div>
@@ -26,6 +25,10 @@
     <div class="mixpanel-platform-section">
       <h2>Matches</h2>
       <div id="matches"></div>
+    </div>
+    <div class="mixpanel-platform-section">
+      <h2>Unique Rates / Unique Sessions</h2>
+      <div id="rateFormula"></div>
     </div>
     <div class="mixpanel-platform-section">
       <div><h2>Retention (last 13 weeks) - Registered then came back and did a Session</h2></div>
@@ -96,6 +99,7 @@
       
     // usage metrics
       function usage(event, div) {
+        console.log($('#' + div))
         var selectDiv = $('<div id="' + div + 'Select></div>').appendTo($('#' + div));
         // define dropdown options for Daily/Weekly/Monthly options
         var intervalSelect = {items:[{value: "day", label: "Daily"},{value: "week", label: "Weekly"},{value: "month", label: "Monthly"}]}
@@ -104,6 +108,8 @@
         var graphDiv = $('<div id="' + div + 'Graph></div>').appendTo($('#' + div));
         graphDiv.MPChart({chartType: 'line'});
         
+        usageData('day', 30, event, graphDiv);
+
         selectDiv.on('change', function() {
           var unit = selectDiv.val();
           var count = unit === 'day' ? 30 : unit === 'week' ? 24 : 12;
