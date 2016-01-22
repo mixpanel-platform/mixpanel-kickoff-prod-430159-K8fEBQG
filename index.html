@@ -8,13 +8,7 @@
     <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
   </head>
   <body class="mixpanel-platform-body">
-    <h1>MP Dashboard</h1>
-    <br/><br/>
-            
     <div class="mixpanel-platform-section">
-      retention (weekly 24, daily 30)
-      Registrations by city: SP, Rio, BA, Santiago, Mexico City, Bogota
-      <div></div>
       <h2>Daily Active Users (DAUs)</h2>
       <div id="DAU"></div>
       <h2>Weekly Active Users (WAUs)</h2>
@@ -225,15 +219,14 @@
       }
     
       MP.api.retention('Session', {
-          from: moment().subtract(12, 'weeks'), 
-          to: moment().subtract(1, 'days'),
+          from: moment().subtract(24, 'weeks'), 
+          to: moment(),
           unit: 'week',
           retention_type: 'born',
           born_event: 'Registered',
-          // retention_type: 'compounded',
           limit:1000,
           segment_method: 'first',
-          interval_count: 12
+          interval_count: 24
         
       }).done(function(results) {
         
