@@ -100,13 +100,12 @@
     // usage metrics
       function usage(event, div) {
         var $div = $('#' + div);
-        var selectDiv = $('<div id="' + div + 'Select></div>').appendTo($div);
-        console.log(selectDiv)
+        var selectDiv = $('<div id="' + div + 'Select"></div>').appendTo($div);
         // define dropdown options for Daily/Weekly/Monthly options
         var intervalSelect = {items:[{value: "day", label: "Daily"},{value: "week", label: "Weekly"},{value: "month", label: "Monthly"}]}
         selectDiv.MPSelect(intervalSelect);
         
-        var graphDiv = $('<div id="' + div + 'Graph></div>').appendTo($div);
+        var graphDiv = $('<div id="' + div + 'Graph"></div>').appendTo($div);
         graphDiv.MPChart({chartType: 'line'});
         
         usageData('day', 30, event, graphDiv);
