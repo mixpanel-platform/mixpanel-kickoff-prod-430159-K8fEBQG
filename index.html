@@ -134,7 +134,7 @@
             from: moment().subtract(count, unit + 's'),
             to: moment(),
             unit: unit,
-            type: 'total'
+            type: 'general'
           }).done(function(result){
             resolve(result.values());
           });
