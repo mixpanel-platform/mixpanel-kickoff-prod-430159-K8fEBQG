@@ -145,35 +145,13 @@
       var rateFormulaGraph = $('#rateFormula').MPChart({chartType: 'line'});
       
       function formula(event1, event2, where1, where2, div) {
-        var promises = [];
-        var event1Data = new Promise(function(resolve,reject) {
-          MP.api.segment(event1, {
+        MP.api.query('/api/2.0/formulas', {
+          formulas: [{"queries": [{"events": [event1], "count_type": "unique", "selector": where1}, {"events": [event2], "count_type": "unique", "selector": where2}], "formula": "(A)/(B)"}]
             from: moment().subtract(30, 'days'),
             to: moment(),
             unit: 'day',
-            type: 'unique',
-            where: where1
-          }).done(function(result){
-            resolve(result.values());
-          });
-        });
-        var event2Data = new Promise(function(resolve,reject){
-          MP.api.segment(event2, {
-            from: moment().subtract(30, 'days'),
-            to: moment(),
-            unit: 'day',
-            type: 'unique',
-            where: where2
-          }).done(function(result){
-            resolve(result.values());
-          });
-        });
-        promises.push(event1Data, event2Data);
-        
-        Promise.all(promises).then(function(data) {
-          console.log(data);
-          // div.MPChart('addSeries', data[0]);
-          // div.MPChart('addSeries', data[1]);
+        }).done(function(results) {
+          div.MPChart('addSeries', results);
         });
       }
       
@@ -184,7 +162,7 @@
         
         usage('Matched_Participated', 'matches');
         
-        formula('Rated Someone', 'Unique Sessions', '', 'string(properties["Created"]) != "undefined" and string(properties["Created"]) != "null"', rateFormulaGraph)
+        formula('Rated_IRatedSomeone', 'Unique Sessions', '', 'string(properties["Created"]) != "undefined" and string(properties["Created"]) != "null"', rateFormulaGraph)
       };
       
       runQuery();
