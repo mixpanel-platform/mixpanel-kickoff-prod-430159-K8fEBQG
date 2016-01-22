@@ -146,7 +146,7 @@
       
       function formula(event1, event2, where1, where2, div) {
         MP.api.query('/api/2.0/formulas', {
-          formulas: [{"queries": [{"events": [event1], "count_type": "unique", "selector": where1}, {"events": [event2], "count_type": "unique", "selector": where2}], "formula": "(A)/(B)"}]
+          formulas: [{"queries": [{"events": [event1], "count_type": "unique", "selector": where1}, {"events": [event2], "count_type": "unique", "selector": where2}], "formula": "(A)/(B)"}],
             from: moment().subtract(30, 'days'),
             to: moment(),
             unit: 'day',
