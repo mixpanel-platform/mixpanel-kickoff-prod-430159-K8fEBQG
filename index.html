@@ -148,9 +148,9 @@
         var promises = [];
         var event1Data = new Promise(function(resolve,reject) {
           MP.api.segment(event1, {
-            from: moment().subtract(count, unit + 's'),
+            from: moment().subtract(30, 'days'),
             to: moment(),
-            unit: unit,
+            unit: 'day',
             type: 'unique',
             where: where1
           }).done(function(result){
@@ -159,16 +159,16 @@
         });
         var event2Data = new Promise(function(resolve,reject){
           MP.api.segment(event2, {
-            from: moment().subtract(count, unit + 's'),
+            from: moment().subtract(30, 'days'),
             to: moment(),
-            unit: unit,
+            unit: 'day',
             type: 'unique',
             where: where2
           }).done(function(result){
             resolve(result.values());
           });
         });
-        promises.push(unique, total);
+        promises.push(event1Data, event2Data);
         
         Promise.all(promises).then(function(data) {
           console.log(data);
