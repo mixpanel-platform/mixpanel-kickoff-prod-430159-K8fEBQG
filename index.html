@@ -165,10 +165,7 @@
         xau('month', 12, mauGraph);
         
         usage('Matched_Participated', 'matches');
-        var date = moment();
-        debugger;
-        console.log(moment()._d.getUTCseconds());
-        formula('Rated_IRatedSomeone', 'Unique Sessions', '', moment() + ' > (properties["Created"])', rateFormulaGraph)
+        formula('Rated_IRatedSomeone', 'Unique Sessions', '', 'datetime(' + moment()._d.getTime() + ') > (properties["Created"])', rateFormulaGraph)
       };
       
       runQuery();
