@@ -166,7 +166,7 @@
         
         usage('Matched_Participated', 'matches');
         console.log(moment());
-        console.log(datetime(moment()));
+        console.log(moment().getUTCseconds());
         formula('Rated_IRatedSomeone', 'Unique Sessions', '', moment() + ' > (properties["Created"])', rateFormulaGraph)
       };
       
