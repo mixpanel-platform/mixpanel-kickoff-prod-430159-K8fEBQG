@@ -165,8 +165,9 @@
         xau('month', 12, mauGraph);
         
         usage('Matched_Participated', 'matches');
-        
-        formula('Rated_IRatedSomeone', 'Unique Sessions', '', 'defined (properties["Created"])', rateFormulaGraph)
+        console.log(moment());
+        console.log(datetime(moment()));
+        formula('Rated_IRatedSomeone', 'Unique Sessions', '', moment() + ' > (properties["Created"])', rateFormulaGraph)
       };
       
       runQuery();
@@ -201,8 +202,6 @@
           newDateItem["People"] = dateItem.first;
           
           for (idx = 0; idx <= maxIdx; idx++) {
-            // if ($.inArray(idx, [1, 4, 24]) == -1)
-            //   continue;
             var propName = "Week " + padDigits(idx, 2);
             if(dateItem.counts[idx]) {
               var amount = dateItem.counts[idx];
