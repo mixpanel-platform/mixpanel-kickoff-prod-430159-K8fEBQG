@@ -241,9 +241,9 @@
            var txt = $(this).text();
            if (txt) {
              var num = txt.substr(0, txt.length - 1);
+             var lastChar = txt.substr(txt.length - 1);
              if (lastChar == "%") {
                var cl = calcRetentionClass(num);
-             var lastChar = txt.substr(txt.length - 1);
                $(this).parent().addClass(cl);
              }
            }
