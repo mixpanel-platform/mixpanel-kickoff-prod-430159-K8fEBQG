@@ -165,7 +165,7 @@
         xau('month', 12, mauGraph);
         
         usage('Matched_Participated', 'matches');
-        formula('Rated_IRatedSomeone', 'Unique Sessions', '', 'datetime(' + moment()._d.getTime() + ') > (properties["Created"])', rateFormulaGraph)
+        formula('Rated_IRatedSomeone', 'Unique Sessions', '', 'datetime(' + moment()._d.getTime() + ') > properties["Created"]', rateFormulaGraph)
       };
       
       runQuery();
