@@ -25,7 +25,7 @@
       <div id="rateFormula"></div>
     </div>
     <div class="mixpanel-platform-section">
-      <div><h2>Retention (last 13 weeks) - Registered then came back and did a Session</h2></div>
+      <div><h2>Retention: Registered then came back and did a Session</h2></div>
       <div id="table4"></div>    
     </div>
     
@@ -201,8 +201,8 @@
           newDateItem["People"] = dateItem.first;
           
           for (idx = 0; idx <= maxIdx; idx++) {
-            if ($.inArray(idx, [1, 4, 24]) == -1)
-              continue;
+            // if ($.inArray(idx, [1, 4, 24]) == -1)
+            //   continue;
             var propName = "Week " + padDigits(idx, 2);
             if(dateItem.counts[idx]) {
               var amount = dateItem.counts[idx];
@@ -240,10 +240,10 @@
         $(".mp_chart_cell span").each(function(index) {
            var txt = $(this).text();
            if (txt) {
-             var lastChar = txt.substr(txt.length - 1);
              var num = txt.substr(0, txt.length - 1);
              if (lastChar == "%") {
                var cl = calcRetentionClass(num);
+             var lastChar = txt.substr(txt.length - 1);
                $(this).parent().addClass(cl);
              }
            }
