@@ -166,7 +166,7 @@
         
         usage('Matched_Participated', 'matches');
         
-        formula('Rated_IRatedSomeone', 'Unique Sessions', '', 'string(properties["Created"]) != "undefined" and string(properties["Created"]) != "null"', rateFormulaGraph)
+        formula('Rated_IRatedSomeone', 'Unique Sessions', '', 'defined (properties["Created"])', rateFormulaGraph)
       };
       
       runQuery();
