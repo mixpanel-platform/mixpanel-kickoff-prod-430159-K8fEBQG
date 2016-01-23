@@ -155,7 +155,7 @@
             to: moment(),
             unit: 'day',
         }).done(function(results) {
-          div.MPChart('addSeries', {event1 + ' / ' + event2: results.data.values[0]);
+          div.MPChart('addSeries', {event1.toString() + ' / ' + event2.toString(): results.data.values[0]);
         });
       }
       
